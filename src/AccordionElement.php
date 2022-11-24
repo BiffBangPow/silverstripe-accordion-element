@@ -12,22 +12,21 @@ use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 
 class AccordionElement extends BaseElement
 {
-    private static $table_name = 'FeaturesAccordionElement';
+    private static $table_name = 'AccordionElement';
     private static $inline_editable = false;
     private static $db = [
         'Content' => 'HTMLText'
     ];
     private static $has_many = [
         'Items' => AccordionItem::class
-    ];
-    private static $controller_class = AccordionElementController::class;
+    ];    
     private static $cascade_duplicates = [
         'Items'
     ];
 
     public function getType()
     {
-        return _t(__CLASS__ . '.BlockType', 'Features accordion');
+        return _t(__CLASS__ . '.BlockType', 'Content accordion');
     }
 
     public function getCMSFields()

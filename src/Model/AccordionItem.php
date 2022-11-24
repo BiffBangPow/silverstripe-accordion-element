@@ -15,21 +15,20 @@ class AccordionItem extends DataObject
     private static $table_name = 'AccordionItem';
     private static $db = [
         'Title' => 'Varchar',
-        'Content' => 'HTMLText'
+        'Content' => 'HTMLText',
+        'OpenOnLoad' => 'Boolean'
     ];
     private static $has_one = [
         'Element' => AccordionElement::class
-    ];
-    private static $owns = [
-        'Image'
     ];
     private static $extensions = [
         SortableExtension::class,
         CallToActionExtension::class
     ];
     private static $summary_fields = [
+        'Title' => 'Title',
         'Content.Summary' => 'Content',
-        'Image.CMSThumbnail' => 'Image'
+        'OpenOnLoad.Nice' => 'Open on load' 
     ];
 
     public function getCMSFields()
