@@ -2,7 +2,7 @@
     <% if $Title && $ShowTitle %>
         <div class="row">
             <div class="col-12">
-                <h2>$Title.XML</h2>
+                <h2 class="element-title">$Title.XML</h2>
             </div>
         </div>
     <% end_if %>
