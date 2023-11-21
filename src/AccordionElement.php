@@ -19,10 +19,11 @@ class AccordionElement extends BaseElement
     ];
     private static $has_many = [
         'Items' => AccordionItem::class
-    ];    
+    ];
     private static $cascade_duplicates = [
         'Items'
     ];
+    private static $controller_class = AccordionElementController::class;
 
     public function getType()
     {

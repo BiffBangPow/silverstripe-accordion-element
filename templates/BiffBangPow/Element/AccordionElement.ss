@@ -18,13 +18,13 @@
     <div class="accordion mt-4" id="accordionElement{$ID}">
         <% loop $Items %>
             <details<% if $OpenOnLoad %> open<% end_if %>>
-                <summary>$Title</summary>
-                <div class="accordion-content">
+                <summary class="py-4">$Title</summary>
+                <div class="accordion-content px-5 pb-4">
                     $Content
                     <% if $CTAType != 'None' %>
-                        <div class="accordion-cta">
+                        <div class="accordion-cta my-3">
                             <p>
-                                <a href="$CTALink" class="cta-link btn btn-secondary"
+                                <a href="$CTALink" class="cta-link btn btn-outline-primary"
                                     <% if $CTAType == 'External' %>target="_blank" rel="noopener"
                                     <% else_if $CTAType == 'Download' %>download
                                     <% end_if %>>
