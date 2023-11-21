@@ -15,7 +15,7 @@
         </div>
     <% end_if %>
 
-    <div class="accordion mt-4" id="accordionElement{$ID}">
+    <div class="accordion mt-2" id="accordionElement{$ID}">
         <% loop $Items %>
             <details<% if $OpenOnLoad %> open<% end_if %>>
                 <summary class="py-4">$Title</summary>
