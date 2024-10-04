@@ -10,7 +10,7 @@ use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
 use SilverStripe\ORM\DataObject;
 use TractorCow\Fluent\Extension\FluentExtension;
 
-class AccordionItem extends DataObject
+class AccordionElementItem extends DataObject
 {
     private static $table_name = 'AccordionItem';
     private static $db = [

@@ -3,7 +3,7 @@
 namespace BiffBangPow\Element;
 
 use BiffBangPow\Element\Control\AccordionElementController;
-use BiffBangPow\Element\Model\AccordionItem;
+use BiffBangPow\Element\Model\AccordionElementItem;
 use DNADesign\Elemental\Models\BaseElement;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
@@ -18,7 +18,7 @@ class AccordionElement extends BaseElement
         'Content' => 'HTMLText'
     ];
     private static $has_many = [
-        'Items' => AccordionItem::class
+        'Items' => AccordionElementItem::class
     ];
     private static $cascade_duplicates = [
         'Items'
