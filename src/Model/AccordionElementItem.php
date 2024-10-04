@@ -12,7 +12,7 @@ use TractorCow\Fluent\Extension\FluentExtension;
 
 class AccordionElementItem extends DataObject
 {
-    private static $table_name = 'AccordionItem';
+    private static $table_name = 'AccordionElementItem';
     private static $db = [
         'Title' => 'Varchar',
         'Content' => 'HTMLText',
