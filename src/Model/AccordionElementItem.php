@@ -22,8 +22,7 @@ class AccordionElementItem extends DataObject
         'Element' => AccordionElement::class
     ];
     private static $extensions = [
-        SortableExtension::class,
-        CallToActionExtension::class
+        SortableExtension::class
     ];
     private static $summary_fields = [
         'Title' => 'Title',
