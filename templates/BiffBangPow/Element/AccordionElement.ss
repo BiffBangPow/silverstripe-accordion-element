@@ -6,7 +6,6 @@
             </div>
         </div>
     <% end_if %>
-
     <% if $Content %>
         <div class="row mt-4">
             <div class="col-12">
@@ -14,7 +13,6 @@
             </div>
         </div>
     <% end_if %>
-
     <div class="accordion mt-2" id="accordionElement{$ID}">
         <% loop $Items %>
             <details<% if $OpenOnLoad %> open<% end_if %>>
@@ -37,7 +35,7 @@
             </details>
         <% end_loop %>
     </div>
-
-
+    <% if $FAQSchema %>
+        <script type="application/ld+json">$FAQSchema.RAW</script>
+    <% end_if %>
 </div>
-
