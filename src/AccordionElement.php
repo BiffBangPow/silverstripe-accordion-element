@@ -42,8 +42,9 @@ class AccordionElement extends BaseElement
                 'crawlers understand this as a list of frequently asked questions. ' .
                 'Only enable this if: the items genuinely are questions and answers ' .
                 'written by us (not user-submitted comments or general collapsible content like ' .
-                'product specs or terms). Only use ONE FAQ accordion per page. ' .
-                'Enabling this on multiple accordions on the same page will produce invalid markup.'
+                'product specs or terms). With Schema Manager installed (including ' .
+                'multiple-FAQ support), several FAQ accordions can appear on one page. ' .
+                'Without Schema Manager, use only one FAQ accordion per page.'
             );
         $fields->addFieldsToTab('Root.Main', [
             HTMLEditorField::create('Content')->setRows(8),
