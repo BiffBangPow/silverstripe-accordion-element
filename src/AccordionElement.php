@@ -38,13 +38,9 @@ class AccordionElement extends BaseElement
             GridFieldConfig_RecordEditor::create()->addComponent(new GridFieldOrderableRows()));
         $faqField = CheckboxField::create('IsFAQ', 'Mark up as FAQ for search engines')
             ->setDescription(
-                'Adds structured data (Schema.org FAQPage) to help search engines and AI ' .
-                'crawlers understand this as a list of frequently asked questions. ' .
-                'Only enable this if: the items genuinely are questions and answers ' .
-                'written by us (not user-submitted comments or general collapsible content like ' .
-                'product specs or terms). With Schema Manager installed (including ' .
-                'multiple-FAQ support), several FAQ accordions can appear on one page. ' .
-                'Without Schema Manager, use only one FAQ accordion per page.'
+                'Enable this when the accordion contains frequently asked questions and their answers. ' .
+                'This helps search engines understand the content. ' .
+                'Do not enable it for general expandable content.'
             );
         $fields->addFieldsToTab('Root.Main', [
             HTMLEditorField::create('Content')->setRows(8),
