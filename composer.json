@@ -16,7 +16,6 @@
   ],
   "require": {
     "dnadesign/silverstripe-elemental": "*",
-    "biffbangpow/silverstripe-element-spacing": "dev-master",
     "biffbangpow/silverstripe-sortable-extension": "dev-master",
     "silverstripe/linkfield": "^5"
   },
@@ -27,6 +26,7 @@
   },
   "extra": {},
   "suggest": {
+    "biffbangpow/silverstripe-element-spacing": "Optional element spacing controls in the CMS.",
     "dorsetdigital/silverstripe-schema-manager": "Output FAQPage structured data through a shared page-level JSON-LD graph instead of inline markup."
   }
 }
