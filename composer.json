@@ -25,6 +25,8 @@
       "BiffBangPow\\Element\\": "src/"
     }
   },
-  "extra": {
+  "extra": {},
+  "suggest": {
+    "dorsetdigital/silverstripe-schema-manager": "Output FAQPage structured data through a shared page-level JSON-LD graph instead of inline markup."
   }
 }

@@ -3,6 +3,9 @@ namespace BiffBangPow\Element;
 use BiffBangPow\Element\Control\AccordionElementController;
 use BiffBangPow\Element\Model\AccordionElementItem;
 use DNADesign\Elemental\Models\BaseElement;
+use DorsetDigital\SchemaManager\Control\SchemaRegistry;
+use DorsetDigital\SchemaManager\Model\Schema\FAQPageSchema;
+use SilverStripe\Control\Director;
 use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
@@ -35,12 +38,9 @@ class AccordionElement extends BaseElement
             GridFieldConfig_RecordEditor::create()->addComponent(new GridFieldOrderableRows()));
         $faqField = CheckboxField::create('IsFAQ', 'Mark up as FAQ for search engines')
             ->setDescription(
-                'Adds structured data (Schema.org FAQPage) to help search engines and AI ' .
-                'crawlers understand this as a list of frequently asked questions. ' .
-                'Only enable this if: the items genuinely are questions and answers ' .
-                'written by us (not user-submitted comments or general collapsible content like ' .
-                'product specs or terms). Only use ONE FAQ accordion per page. ' .
-                'Enabling this on multiple accordions on the same page will produce invalid markup.'
+                'Enable this when the accordion contains frequently asked questions and their answers. ' .
+                'This helps search engines understand the content. ' .
+                'Do not enable it for general expandable content.'
             );
         $fields->addFieldsToTab('Root.Main', [
             HTMLEditorField::create('Content')->setRows(8),
@@ -54,8 +54,9 @@ class AccordionElement extends BaseElement
         return 'bbp-accordion-element';
     }
     /**
-     * Build the JSON-LD FAQPage schema for this accordion.
-     * Returns null if not flagged as FAQ or if there are no items.
+     * Register FAQPage with Schema Manager when available, otherwise return
+     * standalone JSON-LD for the element template. Returns null when the
+     * accordion is not an FAQ or has no items.
      */
     public function getFAQSchema()
     {
@@ -66,6 +67,20 @@ class AccordionElement extends BaseElement
         if (!$items->exists()) {
             return null;
         }
+        // Schema Manager publishes the request graph in the page head.
+        // The template must not output a second, standalone FAQPage script.
+        if (class_exists(FAQPageSchema::class) && class_exists(SchemaRegistry::class)) {
+            $page = Director::get_current_page();
+            if ($page && method_exists($page, 'AbsoluteLink')) {
+                $schema = FAQPageSchema::create($page->AbsoluteLink());
+                foreach ($items as $item) {
+                    $schema->addQuestion((string) $item->Title, (string) $item->Content);
+                }
+                SchemaRegistry::add($schema);
+                return null;
+            }
+        }
+
         $data = [
             '@context' => 'https://schema.org',
             '@type' => 'FAQPage',
