@@ -71,8 +71,8 @@ class AccordionElement extends BaseElement
         // The template must not output a second, standalone FAQPage script.
         if (class_exists(FAQPageSchema::class) && class_exists(SchemaRegistry::class)) {
             $page = Director::get_current_page();
-            if ($page && method_exists($page, 'AbsoluteLink')) {
-                $schema = FAQPageSchema::create($page->AbsoluteLink());
+            if ($page) {
+                $schema = FAQPageSchema::create('page-' . $page->ID);
                 foreach ($items as $item) {
                     $schema->addQuestion((string) $item->Title, (string) $item->Content);
                 }
